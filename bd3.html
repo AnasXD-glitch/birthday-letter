@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f0;
+            color: #ff69b4;
+            text-align: center;
+            padding: 20px;
+            overflow: hidden; /* To hide overflowing balloons */
+        }
+        .header {
+            background-color: #ffccf2;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        .header h1 {
+            font-size: 2.5em;
+            margin: 0;
+        }
+        .content {
+            margin: 20px 0;
+        }
+        .content p {
+            font-size: 1.2em;
+            line-height: 1.6em;
+        }
+        .button {
+            display: inline-block;
+            background-color: #ff69b4;
+            color: #fff;
+            padding: 10px 20px;
+            margin: 20px 0;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 1.2em;
+            cursor: pointer;
+        }
+        .button:hover {
+            background-color: #ff4081;
+        }
+        .footer {
+            margin-top: 20px;
+        }
+        .hello-kitty {
+            width: 200px;
+            margin-top: 20px;
+        }
+        .flowers {
+            width: 100%;
+            margin-top: 20px;
+        }
+        @keyframes surpriseAnimation {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.2); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+        .surprise {
+            animation: surpriseAnimation 1s ease;
+        }
+        .balloon {
+            position: absolute;
+            width: 50px;
+            height: 70px;
+            background-color: #ff69b4;
+            border-radius: 50%;
+            bottom: -100px;
+            animation: rise 5s ease-in infinite;
+        }
+        .balloon::after {
+            content: '';
+            position: absolute;
+            width: 2px;
+            height: 60px;
+            background-color: #ff69b4;
+            left: 50%;
+            top: 70px;
+        }
+        @keyframes rise {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-1000px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🎀 Happy Birthday, Amel! 🎀</h1>
+    </div>
+    <div class="content">
+        <p>🌸 Happy Birthday To YOU My Love🌸</p>
+        <p>On this special day, I want to shower you with all the love and joy you bring into my life. From the moment I met you, you’ve filled my world with happiness, laughter, and love.</p>
+        <img src="https://e1.pxfuel.com/desktop-wallpaper/651/357/desktop-wallpaper-kuromi-my-melody-sanrio-my-melody-and-creepy-cute-kuromi.jpg" alt="Hello Kitty" class="hello-kitty">
+        <p>🌺 Each day with you is a new adventure, and I cherish every moment we share. Your smile lights up my day.</p>
+        <p>💖 Here’s to many more birthdays, adventures, and memories together 🥂.</p>
+        <a class="button" onclick="showSurprise(this)">Click Me! </a>
+    </div>
+    <div class="footer">
+        <p>Happy Birthday, my beautiful kitty! 🐱💕</p>
+        <p>With all my love,</p>
+        <p>Anas.</p>
+    </div>
+    <script>
+        function showSurprise(button) {
+            button.classList.add('surprise');
+            setTimeout(() => {
+                button.classList.remove('surprise');
+            }, 1000);
+
+            for (let i = 0; i < 20; i++) {
+                createBalloon();
+            }
+        }
+
+        function createBalloon() {
+            const balloon = document.createElement('div');
+            balloon.className = 'balloon';
+            balloon.style.left = Math.random() * window.innerWidth + 'px';
+            balloon.style.backgroundColor = getRandomColor();
+            document.body.appendChild(balloon);
+
+            balloon.addEventListener('animationend', () => {
+                balloon.remove();
+            });
+        }
+
+        function getRandomColor() {
+            const colors = ['#ff69b4', '#ff4081', '#ffb3d9', '#ff99c2', '#ffccd5'];
+            return colors[Math.floor(Math.random() * colors.length)];
+        }
+    </script>
+</body>
+</html>
